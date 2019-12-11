@@ -1,7 +1,5 @@
 #!/usr/bin/env node
-import {actual} from '../index.js';
+import { greeting } from '../index';
 
 console.log('Welcome to the Brain Games!');
-actual();
-
-
+greeting();

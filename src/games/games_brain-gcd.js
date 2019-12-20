@@ -6,25 +6,25 @@ const functionTheTask = () => {
   return `${number1} ${number2}`;
 };
 
-const takeNumber1 = (theTask) => {
-  let number1 = '';
+const takeNum1 = (theTask) => {
+  let num1 = '';
   for (let count = 0; theTask[count] !== ' '; count += 1) {
-    number1 += (theTask[count]);
+    num1 += (theTask[count]);
   }
-  return number1;
+  return num1;
 };
-const takeNumber2 = (theTask) => {
-  const number1 = takeNumber1(theTask);
+const takeNum2 = (theTask) => {
+  const num1 = takeNum1(theTask);
   let number2 = '';
-  for (let count = number1.length + 1; count < theTask.length; count += 1) {
+  for (let count = num1.length + 1; count < theTask.length; count += 1) {
     number2 += theTask[count];
   }
   return number2;
 };
-const functionRightAnswer = (theTask) => {
-  const num1 = Number(takeNumber1(theTask));
-  const num2 = Number(takeNumber2(theTask));
 
+const functionRightAnswer = (theTask) => {
+  const num1 = Number(takeNum1(theTask));
+  const num2 = Number(takeNum2(theTask));
   const nod = (nu1, nu2) => {
     if (nu2 === 0) {
       return nu1;

@@ -6,7 +6,14 @@ const greeting = () => {
   return console.log(`\nHello, ${question}!`);
 };
 
-
+const takeNumber2 = (theTask, takeNumber1) => {
+  const number1 = takeNumber1(theTask);
+  let number2 = '';
+  for (let count = number1.length + 1; count < theTask.length; count += 1) {
+    number2 += theTask[count];
+  }
+  return number2;
+};
 const gameEngine = (gameInstruction, functionTheTask, functionRightAnswer, verification) => {
   console.log((`Welcome to the Brain Games!\n${gameInstruction}\n`));
   const questionName = readlineSync.question('May I have your name?');
@@ -27,5 +34,5 @@ const gameEngine = (gameInstruction, functionTheTask, functionRightAnswer, verif
 };
 
 export {
-  greeting, gameEngine,
+  greeting, gameEngine, takeNumber2,
 };

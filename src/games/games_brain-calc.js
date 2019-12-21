@@ -1,3 +1,4 @@
+import { takeNumber2 } from '../index';
 
 const gameInstruction = 'What is the result of the expression?';
 
@@ -23,18 +24,10 @@ const takeNumber1 = (theTask) => {
   }
   return number1;
 };
-const takeNumber2 = (theTask) => {
-  const number1 = takeNumber1(theTask);
-  let number2 = '';
-  for (let count = number1.length + 1; count < theTask.length; count += 1) {
-    number2 += theTask[count];
-  }
-  return number2;
-};
 
 const functionRightAnswer = (theTask) => {
   const number1 = takeNumber1(theTask);
-  const number2 = takeNumber2(theTask);
+  const number2 = takeNumber2(theTask, takeNumber1);
   const rsymbol = theTask[number1.length];
   let result;
   if (rsymbol === '+') {

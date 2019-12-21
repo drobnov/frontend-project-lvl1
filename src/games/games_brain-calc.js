@@ -40,7 +40,7 @@ const functionRightAnswer = (theTask) => {
   return result;
 };
 
-const verification = (rightAnswer, question) => (rightAnswer !== Number(question));
+const verification = (rightAnswer, question) => (rightAnswer !== (question));
 
 export {
   gameInstruction, functionTheTask, functionRightAnswer, verification,

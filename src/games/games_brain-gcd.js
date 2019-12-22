@@ -15,18 +15,15 @@ const takeNumber1 = (theTask) => {
   return num1;
 };
 
-const nod = (nu1, nu2) => {
-  if (nu2 === 0) {
-    return nu1;
-  } if (nu1 === 0) {
-    return nu2;
-  } if (nu1 >= nu2) {
-    return nod(nu1 - nu2, nu2);
-  } if (nu1 < nu2) {
-    return nod(nu1, nu2 - nu1);
+const nod = (number1, number2) => {
+  if (number2 === 0) {
+    return number1;
+  } if (number2 !== 0) {
+    return nod(number2, number1 % number2);
   }
-  return nod(nu1, nu2);
+  return nod(number1, number2);
 };
+
 const functionRightAnswer = (theTask) => {
   const num1 = Number(takeNumber1(theTask));
   const num2 = Number(takeNumber2(theTask, takeNumber1));

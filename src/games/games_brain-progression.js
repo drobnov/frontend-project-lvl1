@@ -1,16 +1,16 @@
 const gameInstruction = 'What number is missing in the progression?';
 
 const arithmeticProgression = (num1, num2) => {
-  let a = num1;
+  let firstDigitOfTheProgression = num1;
   let result = '';
   for (let count = 1; count <= 10; count += 1) {
-    a += num2;
-    result = `${result} ${a}`;
+    firstDigitOfTheProgression += num2;
+    result = `${result} ${firstDigitOfTheProgression}`;
   }
   return result;
 };
 
-const hiddenElementAction1 = (progression) => {
+const locationOfTheHiddenElement = (progression) => {
   const takeElement = (Math.floor(Math.random() * 10) + 9);
   let caunt = takeElement;
   for (; progression[caunt] !== ' ';) {
@@ -19,8 +19,8 @@ const hiddenElementAction1 = (progression) => {
   return caunt;
 };
 
-const hiddenElementAction2 = (progression) => {
-  const caunt = hiddenElementAction1(progression);
+const takeHiddenElement = (progression) => {
+  const caunt = locationOfTheHiddenElement(progression);
   let result2 = '';
   for (let caunt1 = caunt + 1; progression[caunt1] !== ' '; caunt1 += 1) {
     result2 += progression[caunt1];
@@ -28,16 +28,16 @@ const hiddenElementAction2 = (progression) => {
   return result2;
 };
 
-const hiddenElementAction3 = (progression) => {
-  const caunt = hiddenElementAction1(progression);
-  const result2 = hiddenElementAction2(progression);
-  const elementLength = result2.length;
+const progressionStrWithHiddenElement = (progression) => {
+  const caunt = locationOfTheHiddenElement(progression);
+  const hiddenElement = takeHiddenElement(progression);
+  const hiddenelementLength = hiddenElement.length;
   let result3 = '';
   let caunt2 = 0;
   for (; caunt2 <= caunt - 1; caunt2 += 1) {
     result3 += progression[caunt2];
   }
-  const a = caunt2 + elementLength;
+  const a = caunt2 + hiddenelementLength;
   let result4 = '';
   for (let caunt3 = a + 1; caunt3 < progression.length; caunt3 += 1) {
     result4 += progression[caunt3];
@@ -49,8 +49,8 @@ const functionTheTask = () => {
   const number1 = (Math.floor(Math.random() * 10) + 1);
   const number2 = (Math.floor(Math.random() * 10) + 1);
   const progression = arithmeticProgression(number1, number2);
-  const hiddenElemen = hiddenElementAction3(progression);
-  return hiddenElemen;
+  const strProgression = progressionStrWithHiddenElement(progression);
+  return strProgression;
 };
 
 const takeNumber1Action1 = (theTask) => {

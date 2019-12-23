@@ -1,7 +1,7 @@
 {
   "name": "frontend-project-lvl1",
   "version": "2.2.0",
-  "description": "",
+  "description": "Mini game set 'brain games'",
   "main": "dist/index.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
@@ -23,6 +23,13 @@
     "type": "git",
     "url": "git+https://github.com/drobnov/frontend-project-lvl1.git"
   },
+  "keywords": [
+    "brain games",
+    "game",
+    "mini game",
+    "games with numbers",
+    "logical games"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {

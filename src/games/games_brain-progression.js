@@ -53,7 +53,7 @@ const functionTheTask = () => {
   return strProgression;
 };
 
-const takeNumber1Action1 = (theTask) => {
+const takeNumbeInFrontHiddenElementAction1 = (theTask) => {
   let result1 = '';
   for (let caunt = 0; theTask[caunt] !== '.'; caunt += 1) {
     result1 = `${result1}${theTask[caunt]}`;
@@ -61,8 +61,8 @@ const takeNumber1Action1 = (theTask) => {
   return result1;
 };
 
-const takeNumber1Action2 = (theTask) => {
-  const result1 = takeNumber1Action1(theTask);
+const takeNumbeInFrontHiddenElementAction2 = (theTask) => {
+  const result1 = takeNumbeInFrontHiddenElementAction1(theTask);
   let result2 = '';
   for (let caunt = result1.length - 2; result1[caunt] !== ' '; caunt -= 1) {
     result2 = `${result1[caunt]}${result2}`;
@@ -70,8 +70,8 @@ const takeNumber1Action2 = (theTask) => {
   return Number(result2);
 };
 
-const takeNumber2 = (theTask) => {
-  const result1 = takeNumber1Action1(theTask);
+const takeNumberAfterHiddenElement = (theTask) => {
+  const result1 = takeNumbeInFrontHiddenElementAction1(theTask);
   let result2 = '';
   for (let caunt = result1.length + 3; theTask[caunt] !== ' '; caunt += 1) {
     result2 = `${result2}${theTask[caunt]}`;
@@ -80,8 +80,8 @@ const takeNumber2 = (theTask) => {
 };
 
 const functionRightAnswer = (theTask) => {
-  const number1 = takeNumber1Action2(theTask);
-  const number2 = takeNumber2(theTask);
+  const number1 = takeNumbeInFrontHiddenElementAction2(theTask);
+  const number2 = takeNumberAfterHiddenElement(theTask);
   const arithmeticProgressionDifference = (number2 - number1) / 2;
   const result = number1 + arithmeticProgressionDifference;
   return result;

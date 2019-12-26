@@ -1,17 +1,15 @@
+import { gameEngine, randomNumberGenerator } from '../index';
 
 const gameInstruction = 'Answer "yes" if the number is even, otherwise answer "no".';
-const functionTheTask = () => (Math.floor(Math.random() * 100) + 1);
-const functionRightAnswer = (theTask) => {
-  let result = '';
-  if (theTask % 2 === 0) {
-    result = 'yes';
-  } if (theTask % 2 !== 0) {
-    result = 'no';
-  }
-  return result;
-};
+
+const functionTheTask = () => (randomNumberGenerator(100, 1));
+
+const parityChecks = (number) => (number % 2 === 0 ? 'yes' : 'no');
+
+const functionRightAnswer = (theTask) => parityChecks(theTask);
+
 const verification = (rightAnswer, question) => (rightAnswer !== question);
 
-export {
-  gameInstruction, functionTheTask, functionRightAnswer, verification,
-};
+const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer, verification);
+
+export default games;

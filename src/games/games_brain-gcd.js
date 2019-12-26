@@ -1,9 +1,9 @@
-import { takeNumber2 } from '../index';
+import { takeNumber2, gameEngine, randomNumberGenerator } from '../index';
 
 const gameInstruction = 'Find the greatest common divisor of given numbers.';
 const functionTheTask = () => {
-  const number1 = (Math.floor(Math.random() * 100) + 2);
-  const number2 = (Math.floor(Math.random() * 100) + 2);
+  const number1 = (randomNumberGenerator(100, 2));
+  const number2 = (randomNumberGenerator(100, 2));
   return `${number1} ${number2}`;
 };
 
@@ -33,6 +33,6 @@ const functionRightAnswer = (theTask) => {
 
 const verification = (rightAnswer, question) => (rightAnswer !== Number(question));
 
-export {
-  gameInstruction, functionTheTask, functionRightAnswer, verification,
-};
+const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer, verification);
+
+export default games;

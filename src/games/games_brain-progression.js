@@ -1,3 +1,5 @@
+import { gameEngine, randomNumberGenerator } from '../index';
+
 const gameInstruction = 'What number is missing in the progression?';
 
 const arithmeticProgression = (num1, num2) => {
@@ -11,7 +13,7 @@ const arithmeticProgression = (num1, num2) => {
 };
 
 const locationOfTheHiddenElement = (progression) => {
-  const takeElement = (Math.floor(Math.random() * 10) + 9);
+  const takeElement = (randomNumberGenerator(10, 9));
   let caunt = takeElement;
   for (; progression[caunt] !== ' ';) {
     caunt += 1;
@@ -46,8 +48,8 @@ const progressionStrWithHiddenElement = (progression) => {
 };
 
 const functionTheTask = () => {
-  const number1 = (Math.floor(Math.random() * 10) + 1);
-  const number2 = (Math.floor(Math.random() * 10) + 1);
+  const number1 = (randomNumberGenerator(10, 1));
+  const number2 = (randomNumberGenerator(10, 1));
   const progression = arithmeticProgression(number1, number2);
   const strProgression = progressionStrWithHiddenElement(progression);
   return strProgression;
@@ -89,6 +91,6 @@ const functionRightAnswer = (theTask) => {
 
 const verification = (rightAnswer, question) => (rightAnswer !== Number(question));
 
-export {
-  gameInstruction, functionTheTask, functionRightAnswer, verification,
-};
+const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer, verification);
+
+export default games;

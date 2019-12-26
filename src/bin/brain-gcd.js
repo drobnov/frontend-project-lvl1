@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-import {
-  gameInstruction, functionTheTask, functionRightAnswer, verification,
-} from '../games/games_brain-gcd';
-import { gameEngine } from '../index';
+import games from '../games/games_brain-gcd';
 
-gameEngine(gameInstruction, functionTheTask, functionRightAnswer, verification);
+games();

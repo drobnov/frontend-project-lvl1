@@ -1,5 +1,5 @@
 
-import gameEngine from '../index';
+import { gameEngine, cons } from '../index';
 import { randomNumberGenerator } from '../utils';
 
 const gameInstruction = 'What number is missing in the progression?';
@@ -91,6 +91,12 @@ const functionRightAnswer = (theTask) => {
   return String(result);
 };
 
-const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer);
+const taskRightAnswer = () => {
+  const theTask = functionTheTask();
+  const rightAnswer = functionRightAnswer(theTask);
+  return cons(theTask, rightAnswer);
+};
+
+const games = () => gameEngine(gameInstruction, taskRightAnswer);
 
 export default games;

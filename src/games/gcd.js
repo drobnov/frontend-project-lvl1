@@ -1,4 +1,4 @@
-import gameEngine from '../index';
+import { gameEngine, cons } from '../index';
 import { takeNumber2, randomNumberGenerator } from '../utils';
 
 const gameInstruction = 'Find the greatest common divisor of given numbers.';
@@ -32,6 +32,12 @@ const functionRightAnswer = (theTask) => {
   return String(result);
 };
 
-const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer);
+const taskRightAnswer = () => {
+  const theTask = functionTheTask();
+  const rightAnswer = functionRightAnswer(theTask);
+  return cons(theTask, rightAnswer);
+};
+
+const games = () => gameEngine(gameInstruction, taskRightAnswer);
 
 export default games;

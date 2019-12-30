@@ -1,5 +1,5 @@
 
-import gameEngine from '../index';
+import { gameEngine, cons } from '../index';
 import { randomNumberGenerator } from '../utils';
 
 const gameInstruction = 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -13,6 +13,12 @@ const functionRightAnswer = (theTask) => {
   return caunt !== theTask ? 'no' : 'yes';
 };
 
-const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer);
+const taskRightAnswer = () => {
+  const theTask = functionTheTask();
+  const rightAnswer = functionRightAnswer(theTask);
+  return cons(theTask, rightAnswer);
+};
+
+const games = () => gameEngine(gameInstruction, taskRightAnswer);
 
 export default games;

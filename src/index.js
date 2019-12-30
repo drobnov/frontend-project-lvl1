@@ -1,15 +1,15 @@
 import readlineSync from 'readline-sync';
+import { cons, car, cdr } from '@hexlet/pairs';
 
-const gameEngine = (gameInstruction, functionTheTask, functionRightAnswer) => {
+const gameEngine = (gameInstruction, taskRightAnswer) => {
   console.log((`Welcome to the Brain Games!\n${gameInstruction}\n`));
   const questionName = readlineSync.question('May I have your name?');
   console.log(`Hello, ${questionName}!\n`);
   const iter = (count) => {
-    const theTask = functionTheTask();
-    const rightAnswer = functionRightAnswer(theTask);
-    const question = readlineSync.question(`Question: ${theTask}\nYour answer: `);
-    if (rightAnswer !== question) {
-      return console.log(`${question} is wrong answer ;(. Correct answer was ${rightAnswer}.\nLet's try again, ${questionName}!`);
+    const theTaskRightAnswer = taskRightAnswer();
+    const question = readlineSync.question(`Question: ${car(theTaskRightAnswer)}\nYour answer: `);
+    if ((cdr(theTaskRightAnswer)) !== question) {
+      return console.log(`${question} is wrong answer ;(. Correct answer was ${cdr(theTaskRightAnswer)}.\nLet's try again, ${questionName}!`);
     } if (count === 3) {
       return console.log(`Congratulations, ${questionName}!`);
     } console.log('Correct!');
@@ -18,4 +18,4 @@ const gameEngine = (gameInstruction, functionTheTask, functionRightAnswer) => {
   return iter(1);
 };
 
-export default gameEngine;
+export { gameEngine, cons };

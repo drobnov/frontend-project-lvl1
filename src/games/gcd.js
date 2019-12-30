@@ -1,4 +1,5 @@
-import { takeNumber2, gameEngine, randomNumberGenerator } from '../index';
+import gameEngine from '../index';
+import { takeNumber2, randomNumberGenerator } from '../utils';
 
 const gameInstruction = 'Find the greatest common divisor of given numbers.';
 const functionTheTask = () => {

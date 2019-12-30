@@ -1,4 +1,6 @@
-import { gameEngine, randomNumberGenerator } from '../index';
+
+import gameEngine from '../index';
+import { randomNumberGenerator } from '../utils';
 
 const gameInstruction = 'What number is missing in the progression?';
 

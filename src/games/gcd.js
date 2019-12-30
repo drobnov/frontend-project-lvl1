@@ -29,11 +29,9 @@ const functionRightAnswer = (theTask) => {
   const num1 = Number(takeNumber1(theTask));
   const num2 = Number(takeNumber2(theTask, takeNumber1));
   const result = nod(num1, num2);
-  return result;
+  return String(result);
 };
 
-const verification = (rightAnswer, question) => (rightAnswer !== Number(question));
-
-const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer, verification);
+const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer);
 
 export default games;

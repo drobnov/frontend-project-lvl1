@@ -13,8 +13,6 @@ const functionRightAnswer = (theTask) => {
   return caunt !== theTask ? 'no' : 'yes';
 };
 
-const verification = (rightAnswer, question) => (rightAnswer !== question);
-
-const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer, verification);
+const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer);
 
 export default games;

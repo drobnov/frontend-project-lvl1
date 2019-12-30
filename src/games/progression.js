@@ -88,11 +88,9 @@ const functionRightAnswer = (theTask) => {
   const number2 = takeNumberAfterHiddenElement(theTask);
   const arithmeticProgressionDifference = (number2 - number1) / 2;
   const result = number1 + arithmeticProgressionDifference;
-  return result;
+  return String(result);
 };
 
-const verification = (rightAnswer, question) => (rightAnswer !== Number(question));
-
-const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer, verification);
+const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer);
 
 export default games;

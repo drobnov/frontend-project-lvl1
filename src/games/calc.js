@@ -49,11 +49,9 @@ const functionRightAnswer = (theTask) => {
       break;
       // no default
   }
-  return result;
+  return String(result);
 };
 
-const verification = (rightAnswer, question) => ((rightAnswer) !== Number(question));
-
-const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer, verification);
+const games = () => gameEngine(gameInstruction, functionTheTask, functionRightAnswer);
 
 export default games;

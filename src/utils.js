@@ -1,15 +1,15 @@
 
-const randomNumberGenerator = (number1, number2) => (Math.floor(Math.random() * number1) + number2);
+const randomNumberGenerator = (min, max) => Math.floor(Math.random() * (max + 1) - min) + min;
 
-const takeNumber2 = (theTask, takeNumber1) => {
-  const number1 = takeNumber1(theTask);
+const getNumber2 = (task, getNumber1) => {
+  const number1 = getNumber1(task);
   let number2 = '';
-  for (let count = number1.length + 1; count < theTask.length; count += 1) {
-    number2 += theTask[count];
+  for (let count = number1.length + 1; count < task.length; count += 1) {
+    number2 += task[count];
   }
   return number2;
 };
 
 export {
-  takeNumber2, randomNumberGenerator,
+  getNumber2, randomNumberGenerator,
 };

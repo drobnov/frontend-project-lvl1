@@ -1,41 +1,28 @@
 import { gameEngine, cons } from '../index';
-import { takeNumber2, randomNumberGenerator } from '../utils';
+import { getNumber2, randomNumberGenerator } from '../utils';
 
 const gameInstruction = 'What is the result of the expression?';
 
-const functionTheTask = () => {
-  const number1 = randomNumberGenerator(10, 15);
-  const number2 = randomNumberGenerator(10, 15);
-  const symbol = '+-*+-*+-*+-';
-  const generatorSymbol = (symbol[randomNumberGenerator(10, 1)]);
-  let result;
-  switch (generatorSymbol) {
-    case '+':
-      result = `${number1} + ${number2}`;
-      break;
-    case '-':
-      result = `${number1} - ${number2}`;
-      break;
-    case '*':
-      result = `${number1} * ${number2}`;
-      break;
-      // no default
-  }
-  return result;
+const symbol = '+-*';
+
+const functionTask = () => {
+  const number1 = randomNumberGenerator(5, 50);
+  const number2 = randomNumberGenerator(5, 50);
+  return `${number1} ${symbol[randomNumberGenerator(0, 2)]} ${number2}`;
 };
 
-const takeNumber1 = (theTask) => {
+const getNumber1 = (task) => {
   let number1 = '';
-  for (let count = 0; theTask[count] !== '+' && theTask[count] !== '-' && theTask[count] !== '*'; count += 1) {
-    number1 += theTask[count];
+  for (let count = 0; task[count] !== '+' && task[count] !== '-' && task[count] !== '*'; count += 1) {
+    number1 += task[count];
   }
   return number1;
 };
 
-const functionRightAnswer = (theTask) => {
-  const number1 = takeNumber1(theTask);
-  const number2 = takeNumber2(theTask, takeNumber1);
-  const rsymbol = theTask[number1.length];
+const functionRightAnswer = (task) => {
+  const number1 = getNumber1(task);
+  const number2 = getNumber2(task, getNumber1);
+  const rsymbol = task[number1.length];
   let result;
   switch (rsymbol) {
     case '+':
@@ -53,9 +40,9 @@ const functionRightAnswer = (theTask) => {
 };
 
 const taskRightAnswer = () => {
-  const theTask = functionTheTask();
-  const rightAnswer = functionRightAnswer(theTask);
-  return cons(theTask, rightAnswer);
+  const task = functionTask();
+  const rightAnswer = functionRightAnswer(task);
+  return cons(task, rightAnswer);
 };
 
 const games = () => gameEngine(gameInstruction, taskRightAnswer);

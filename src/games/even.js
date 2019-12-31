@@ -4,16 +4,14 @@ import { randomNumberGenerator } from '../utils';
 
 const gameInstruction = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const functionTheTask = () => (randomNumberGenerator(100, 1));
+const functionTask = () => randomNumberGenerator(30, 99);
 
-const parityChecks = (number) => (number % 2 === 0 ? 'yes' : 'no');
-
-const functionRightAnswer = (theTask) => parityChecks(theTask);
+const functionRightAnswer = (task) => (task % 2 === 0 ? 'yes' : 'no');
 
 const taskRightAnswer = () => {
-  const theTask = functionTheTask();
-  const rightAnswer = functionRightAnswer(theTask);
-  return cons(theTask, rightAnswer);
+  const task = functionTask();
+  const rightAnswer = functionRightAnswer(task);
+  return cons(task, rightAnswer);
 };
 
 const games = () => gameEngine(gameInstruction, taskRightAnswer);

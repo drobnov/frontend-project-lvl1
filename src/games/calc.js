@@ -1,30 +1,13 @@
 import { gameEngine, cons } from '../index';
-import { getNumber2, randomNumberGenerator } from '../utils';
+import { randomNumberGenerator, mathematicalSymbol } from '../utils';
 
 const gameInstruction = 'What is the result of the expression?';
 
-const symbol = '+-*';
+const calculatesTask = (number1, number2, sumbol) => `${number1} ${sumbol} ${number2}`;
 
-const functionTask = () => {
-  const number1 = randomNumberGenerator(5, 50);
-  const number2 = randomNumberGenerator(5, 50);
-  return `${number1} ${symbol[randomNumberGenerator(0, 2)]} ${number2}`;
-};
-
-const getNumber1 = (task) => {
-  let number1 = '';
-  for (let count = 0; task[count] !== '+' && task[count] !== '-' && task[count] !== '*'; count += 1) {
-    number1 += task[count];
-  }
-  return number1;
-};
-
-const functionRightAnswer = (task) => {
-  const number1 = getNumber1(task);
-  const number2 = getNumber2(task, getNumber1);
-  const rsymbol = task[number1.length];
+const calculatesRightAnswer = (number1, number2, sumbol) => {
   let result;
-  switch (rsymbol) {
+  switch (sumbol) {
     case '+':
       result = Number(number1) + Number(number2);
       break;
@@ -40,8 +23,11 @@ const functionRightAnswer = (task) => {
 };
 
 const taskRightAnswer = () => {
-  const task = functionTask();
-  const rightAnswer = functionRightAnswer(task);
+  const sumbol = mathematicalSymbol[randomNumberGenerator(0, 2)];
+  const number1 = randomNumberGenerator(5, 50);
+  const number2 = randomNumberGenerator(5, 50);
+  const task = calculatesTask(number1, number2, sumbol);
+  const rightAnswer = calculatesRightAnswer(number1, number2, sumbol);
   return cons(task, rightAnswer);
 };
 

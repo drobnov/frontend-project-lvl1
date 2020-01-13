@@ -10,11 +10,13 @@ const gameEngine = (gameInstruction, taskRightAnswer) => {
     const theTaskRightAnswer = taskRightAnswer();
     const question = readlineSync.question(`Question: ${car(theTaskRightAnswer)}\nYour answer: `);
     if ((cdr(theTaskRightAnswer)) !== question) {
-      return console.log(`${question} is wrong answer ;(. Correct answer was ${cdr(theTaskRightAnswer)}.\nLet's try again, ${questionName}!`);
+      console.log(`${question} is wrong answer ;(. Correct answer was ${cdr(theTaskRightAnswer)}.\nLet's try again, ${questionName}!`);
+      return;
     } if (count === numberRounds) {
-      return console.log(`Congratulations, ${questionName}!`);
+      console.log(`Congratulations, ${questionName}!`);
+      return;
     } console.log('Correct!');
-    return iter(count + 1);
+    iter(count + 1);
   };
   return iter(1);
 };

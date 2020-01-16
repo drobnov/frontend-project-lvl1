@@ -1,16 +1,16 @@
 import readlineSync from 'readline-sync';
 import { cons, car, cdr } from '@hexlet/pairs';
 
-const gameEngine = (gameInstruction, taskRightAnswer) => {
+const launchesGameEngine = (gameInstruction, calcTaskRightAnswer) => {
   console.log((`Welcome to the Brain Games!\n${gameInstruction}\n`));
   const questionName = readlineSync.question('May I have your name?');
   console.log(`Hello, ${questionName}!\n`);
   const iter = (count) => {
     const numberRounds = 3;
-    const theTaskRightAnswer = taskRightAnswer();
-    const question = readlineSync.question(`Question: ${car(theTaskRightAnswer)}\nYour answer: `);
-    if ((cdr(theTaskRightAnswer)) !== question) {
-      console.log(`${question} is wrong answer ;(. Correct answer was ${cdr(theTaskRightAnswer)}.\nLet's try again, ${questionName}!`);
+    const taskRightAnswer = calcTaskRightAnswer();
+    const question = readlineSync.question(`Question: ${car(taskRightAnswer)}\nYour answer: `);
+    if ((cdr(taskRightAnswer)) !== question) {
+      console.log(`${question} is wrong answer ;(. Correct answer was ${cdr(taskRightAnswer)}.\nLet's try again, ${questionName}!`);
       return;
     } if (count === numberRounds) {
       console.log(`Congratulations, ${questionName}!`);
@@ -21,4 +21,4 @@ const gameEngine = (gameInstruction, taskRightAnswer) => {
   return iter(1);
 };
 
-export { gameEngine, cons };
+export { launchesGameEngine, cons };

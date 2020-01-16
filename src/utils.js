@@ -3,7 +3,6 @@ const randomNumberGenerator = (min, max) => Math.floor(Math.random() * (max - mi
 
 const mathematicalSymbol = '+-*';
 
-
 export {
   randomNumberGenerator, mathematicalSymbol,
 };

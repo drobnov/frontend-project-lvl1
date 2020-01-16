@@ -1,4 +1,4 @@
-import { gameEngine, cons } from '../index';
+import { launchesGameEngine, cons } from '../index';
 import { randomNumberGenerator, mathematicalSymbol } from '../utils';
 
 const gameInstruction = 'What is the result of the expression?';
@@ -9,28 +9,28 @@ const calculatesRightAnswer = (number1, number2, sumbol) => {
   let result;
   switch (sumbol) {
     case '+':
-      result = Number(number1) + Number(number2);
+      result = number1 + number2;
       break;
     case '-':
-      result = Number(number1) - Number(number2);
+      result = number1 - number2;
       break;
     case '*':
-      result = Number(number1) * Number(number2);
+      result = number1 * number2;
       break;
       // no default
   }
-  return String(result);
+  return result;
 };
 
-const taskRightAnswer = () => {
-  const sumbol = mathematicalSymbol[randomNumberGenerator(0, 2)];
+const calcTaskRightAnswer = () => {
+  const sumbol = mathematicalSymbol[randomNumberGenerator(0, mathematicalSymbol.length - 1)];
   const number1 = randomNumberGenerator(5, 50);
   const number2 = randomNumberGenerator(5, 50);
   const task = calculatesTask(number1, number2, sumbol);
-  const rightAnswer = calculatesRightAnswer(number1, number2, sumbol);
+  const rightAnswer = String(calculatesRightAnswer(number1, number2, sumbol));
   return cons(task, rightAnswer);
 };
 
-const games = () => gameEngine(gameInstruction, taskRightAnswer);
+const gameLaunch = () => launchesGameEngine(gameInstruction, calcTaskRightAnswer);
 
-export default games;
+export default gameLaunch;

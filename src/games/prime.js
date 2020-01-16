@@ -1,10 +1,10 @@
 
-import { gameEngine, cons } from '../index';
+import { launchesGameEngine, cons } from '../index';
 import { randomNumberGenerator } from '../utils';
 
 const gameInstruction = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const checkingNumberSimplicity = (number) => {
+const isCheckingNumberSimplicity = (number) => {
   if (number <= 1) {
     return 'no';
   }
@@ -12,16 +12,17 @@ const checkingNumberSimplicity = (number) => {
   for (; number % caunt !== 0;) {
     caunt += 1;
   }
-  const isChecking = caunt !== number;
-  return isChecking ? 'no' : 'yes';
+  return caunt !== number;
 };
 
-const taskRightAnswer = () => {
+const calculatesTask = (task) => (isCheckingNumberSimplicity(task) ? 'no' : 'yes');
+
+const calcTaskRightAnswer = () => {
   const task = randomNumberGenerator(10, 99);
-  const rightAnswer = checkingNumberSimplicity(task);
+  const rightAnswer = calculatesTask(task);
   return cons(task, rightAnswer);
 };
 
-const games = () => gameEngine(gameInstruction, taskRightAnswer);
+const gameLaunch = () => launchesGameEngine(gameInstruction, calcTaskRightAnswer);
 
-export default games;
+export default gameLaunch;

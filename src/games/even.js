@@ -1,6 +1,7 @@
 
-import { launchesGameEngine, cons } from '../index';
-import { randomNumberGenerator } from '../utils';
+import engine from '../index';
+import randomNumberGenerator from '../utils';
+import { cons } from '../../node_modules/@hexlet/pairs/dist/index';
 
 const gameInstruction = 'Answer "yes" if the number is even, otherwise answer "no".';
 
@@ -14,6 +15,6 @@ const calcTaskRightAnswer = () => {
   return cons(task, rightAnswer);
 };
 
-const gameLaunch = () => launchesGameEngine(gameInstruction, calcTaskRightAnswer);
+const gameLaunch = () => engine(gameInstruction, calcTaskRightAnswer);
 
 export default gameLaunch;

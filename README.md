@@ -17,13 +17,13 @@ The project contains a set of logical mini-games:
   ` npm link `
 
   ## Using
-  `
-  * brain-even
-  * brain-calc
-  * brain-gcd
-  * brain-progression
-  * brain-prime
-  `
+
+ `> $ brain-even`
+ `> $ brain-calc`
+ `> $ brain-gcd`
+ `> $ brain-progression`
+ `> $ brain-prime`
+  
 ### An example of installing and running a game "brain-even"
 <a href="https://asciinema.org/a/qt6N5OzmZMjwEdRqNSBOk0IXH" target="_blank"><img src="https://asciinema.org/a/qt6N5OzmZMjwEdRqNSBOk0IXH.svg" /></a>
 

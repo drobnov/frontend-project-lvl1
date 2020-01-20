@@ -1,12 +1,12 @@
-import engine from '../index';
+import { cons } from '@hexlet/pairs';
+import engine from '..';
 import randomNumberGenerator from '../utils';
-import { cons } from '../../node_modules/@hexlet/pairs/dist/index';
 
 const gameInstruction = 'What is the result of the expression?';
 
-const mathematicalSymbols = '+-*';
+const operator = '+-*';
 
-const calculatesTask = (number1, number2, sumbol) => `${number1} ${sumbol} ${number2}`;
+const definitionTask = (number1, number2, sumbol) => `${number1} ${sumbol} ${number2}`;
 
 const calculatesRightAnswer = (number1, number2, sumbol) => {
   let result;
@@ -25,15 +25,15 @@ const calculatesRightAnswer = (number1, number2, sumbol) => {
   return result;
 };
 
-const calcTaskRightAnswer = () => {
-  const sumbol = mathematicalSymbols[randomNumberGenerator(0, mathematicalSymbols.length - 1)];
+const definitionTaskRightAnswer = () => {
+  const sumbol = operator[randomNumberGenerator(0, operator.length - 1)];
   const number1 = randomNumberGenerator(5, 50);
   const number2 = randomNumberGenerator(5, 50);
-  const task = calculatesTask(number1, number2, sumbol);
+  const task = definitionTask(number1, number2, sumbol);
   const rightAnswer = String(calculatesRightAnswer(number1, number2, sumbol));
   return cons(task, rightAnswer);
 };
 
-const gameLaunch = () => engine(gameInstruction, calcTaskRightAnswer);
+const playGame = () => engine(gameInstruction, definitionTaskRightAnswer);
 
-export default gameLaunch;
+export default playGame;

@@ -1,39 +1,38 @@
-
-import engine from '../index';
+import { cons } from '@hexlet/pairs';
+import engine from '..';
 import randomNumberGenerator from '../utils';
-import { cons } from '../../node_modules/@hexlet/pairs/dist/index';
 
 const gameInstruction = 'What number is missing in the progression?';
 
-const lengthProgressionCount = 9;
+const lengthProgression = 9;
 
-const calcArithmeticProgression = (num1, num2, locHiddenElement) => {
+const definitionProgression = (num1, num2, hiddenElementLocation) => {
   let firstDigitProgression = num1;
   let result = '';
-  for (let count = 0; count <= lengthProgressionCount; count += 1) {
+  for (let count = 0; count <= lengthProgression; count += 1) {
     firstDigitProgression += num2;
-    let progressionStep;
-    if (locHiddenElement === count) {
-      progressionStep = '..';
+    let elementProgression;
+    if (hiddenElementLocation === count) {
+      elementProgression = '..';
     } else {
-      progressionStep = String(firstDigitProgression);
+      elementProgression = String(firstDigitProgression);
     }
-    result = `${result} ${progressionStep}`;
+    result = `${result} ${elementProgression}`;
   }
   return result;
 };
 
-const calcHiddenElement = (num1, num2, locHiddenElement) => num1 + num2 * (locHiddenElement + 1);
+const calcHiddenElement = (num1, num2, hiddenElementLoc) => num1 + num2 * (hiddenElementLoc + 1);
 
-const calcTaskRightAnswer = () => {
+const definitionTaskRightAnswer = () => {
   const number1 = (randomNumberGenerator(10, 50));
   const number2 = (randomNumberGenerator(2, 10));
-  const locationHiddenElement = randomNumberGenerator(1, lengthProgressionCount - 1);
-  const task = calcArithmeticProgression(number1, number2, locationHiddenElement);
-  const rightAnswer = String(calcHiddenElement(number1, number2, locationHiddenElement));
+  const hiddenElementLocation = randomNumberGenerator(1, lengthProgression - 1);
+  const task = definitionProgression(number1, number2, hiddenElementLocation);
+  const rightAnswer = String(calcHiddenElement(number1, number2, hiddenElementLocation));
   return cons(task, rightAnswer);
 };
 
-const gameLaunch = () => engine(gameInstruction, calcTaskRightAnswer);
+const playGame = () => engine(gameInstruction, definitionTaskRightAnswer);
 
-export default gameLaunch;
+export default playGame;

@@ -2,8 +2,10 @@ import readlineSync from 'readline-sync';
 import { car, cdr } from '@hexlet/pairs';
 
 const roundsCount = 3;
+
 const engine = (gameInstruction, calcTaskRightAnswer) => {
-  console.log((`Welcome to the Brain Games!\n${gameInstruction}\n`));
+  console.log('Welcome to the Brain Games!');
+  console.log(gameInstruction);
   const userName = readlineSync.question('May I have your name?');
   console.log(`Hello, ${userName}!\n`);
   const iter = (count) => {

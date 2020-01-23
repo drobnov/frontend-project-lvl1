@@ -6,12 +6,12 @@ const gameInstruction = 'Answer "yes" if the number is even, otherwise answer "n
 
 const isEven = (task) => task % 2 === 0;
 
-const definitionTaskRightAnswer = () => {
+const calculatesTaskRightAnswer = () => {
   const task = randomNumberGenerator(30, 99);
   const rightAnswer = (isEven(task) ? 'yes' : 'no');
   return cons(task, rightAnswer);
 };
 
-const playGame = () => engine(gameInstruction, definitionTaskRightAnswer);
+const playGame = () => engine(gameInstruction, calculatesTaskRightAnswer);
 
 export default playGame;

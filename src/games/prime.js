@@ -4,7 +4,7 @@ import randomNumberGenerator from '../utils';
 
 const gameInstruction = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const isCheckingNumberSimplicity = (number) => {
+const isPrime = (number) => {
   if (number <= 1) {
     return true;
   }
@@ -15,12 +15,12 @@ const isCheckingNumberSimplicity = (number) => {
   return result !== number;
 };
 
-const definitionTaskRightAnswer = () => {
+const calculatesTaskRightAnswer = () => {
   const task = randomNumberGenerator(10, 99);
-  const rightAnswer = isCheckingNumberSimplicity(task) ? 'no' : 'yes';
+  const rightAnswer = isPrime(task) ? 'no' : 'yes';
   return cons(task, rightAnswer);
 };
 
-const playGame = () => engine(gameInstruction, definitionTaskRightAnswer);
+const playGame = () => engine(gameInstruction, calculatesTaskRightAnswer);
 
 export default playGame;

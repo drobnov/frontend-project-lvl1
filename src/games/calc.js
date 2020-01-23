@@ -4,9 +4,9 @@ import randomNumberGenerator from '../utils';
 
 const gameInstruction = 'What is the result of the expression?';
 
-const operator = '+-*';
+const operators = '+-*';
 
-const definitionTask = (number1, number2, sumbol) => `${number1} ${sumbol} ${number2}`;
+const calculatesTask = (number1, number2, sumbol) => `${number1} ${sumbol} ${number2}`;
 
 const calculatesRightAnswer = (number1, number2, sumbol) => {
   let result;
@@ -25,15 +25,15 @@ const calculatesRightAnswer = (number1, number2, sumbol) => {
   return result;
 };
 
-const definitionTaskRightAnswer = () => {
-  const sumbol = operator[randomNumberGenerator(0, operator.length - 1)];
+const calculatesTaskRightAnswer = () => {
+  const sign = operators[randomNumberGenerator(0, operators.length - 1)];
   const number1 = randomNumberGenerator(5, 50);
   const number2 = randomNumberGenerator(5, 50);
-  const task = definitionTask(number1, number2, sumbol);
-  const rightAnswer = String(calculatesRightAnswer(number1, number2, sumbol));
+  const task = calculatesTask(number1, number2, sign);
+  const rightAnswer = String(calculatesRightAnswer(number1, number2, sign));
   return cons(task, rightAnswer);
 };
 
-const playGame = () => engine(gameInstruction, definitionTaskRightAnswer);
+const playGame = () => engine(gameInstruction, calculatesTaskRightAnswer);
 
 export default playGame;

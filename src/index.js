@@ -9,6 +9,10 @@ const engine = (gameInstruction, calcTaskRightAnswer) => {
   const userName = readlineSync.question('May I have your name?');
   console.log(`Hello, ${userName}!\n`);
   const iter = (count) => {
+    if (count === roundsCount) {
+      console.log(`Congratulations, ${userName}!`);
+      return;
+    }
     const taskRightAnswer = calcTaskRightAnswer();
     const task = car(taskRightAnswer);
     const rightAnswer = cdr(taskRightAnswer);
@@ -18,13 +22,10 @@ const engine = (gameInstruction, calcTaskRightAnswer) => {
       console.log(`${answerUser} is wrong answer ;(. Correct answer was ${rightAnswer}.`);
       console.log(`Let's try again, ${userName}!`);
       return;
-    } if (count === roundsCount) {
-      console.log(`Congratulations, ${userName}!`);
-      return;
     } console.log('Correct!');
     iter(count + 1);
   };
-  iter(1);
+  iter(0);
 };
 
 export default engine;

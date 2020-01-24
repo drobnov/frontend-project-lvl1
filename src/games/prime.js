@@ -5,11 +5,14 @@ import randomNumberGenerator from '../utils';
 const gameInstruction = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
-  if (number <= 1) {
-    return true;
+  if (number <= 2) {
+    return false;
   }
   let result;
   for (let caunt = 2; number % caunt !== 0; caunt += 1) {
+    if (number % caunt === 0) {
+      break;
+    }
     result = caunt;
   }
   return result !== number;
